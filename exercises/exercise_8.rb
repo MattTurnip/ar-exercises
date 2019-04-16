@@ -5,19 +5,13 @@ require_relative './exercise_3'
 require_relative './exercise_4'
 require_relative './exercise_5'
 require_relative './exercise_6'
+require_relative './exercise_7'
 
-puts "Exercise 7"
+puts "Exercise 8"
 puts "----------"
 
 # Your code goes here ...
-puts "==============Please enter a store name=============="
+@store1.employees.create!(first_name: "Testy", last_name: "McTestTest", hourly_rate: 199)
 
-# user_store = $stdin.gets.chomp
-
-# store = Store.create(name: user_store)
-
-# store.errors.full_messages.each do |e|
-#     puts e
-# end
-
-
+testy = Employee.find_by_first_name("Testy")
+puts "Testy's password is #{testy.password} :O"
