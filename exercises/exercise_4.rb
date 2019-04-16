@@ -18,4 +18,9 @@ Store.create!(name: "Yaletown", annual_revenue: 430000, mens_apparel: true, wome
   puts "annual revenue that store: #{store.annual_revenue}"
 end
 
-@broke_unisex_stores = Store.where({womens_apparel: true}).having('annual_revenue < 1000000').group('id')
+#not performant but it works
+# @broke_unisex_stores = Store.where({womens_apparel: true}).having('annual_revenue < 1000000').group('id')
+
+@broke_unisex_stores = Store.where(["womens_apparel = ? AND annual_revenue < ?", true, 1000000])
+
+binding.pry
