@@ -8,9 +8,9 @@ ActiveRecord::Base.logger = Logger.new(STDOUT)
 
 puts 'Establishing connection to database ...'
 ActiveRecord::Base.establish_connection(
-  adapter: 'postgresql',
+  adapter: 'postgresql', #problems with this!!!
   database: 'ar_exercises',
-  username: 'development',
+  username: 'development', #i didnt enter this upon ceating my DB--- problem???
   password: 'development',
   host: 'localhost',
   port: 5432,
@@ -21,7 +21,7 @@ ActiveRecord::Base.establish_connection(
 puts 'CONNECTED'
 
 puts 'Setting up Database (recreating tables) ...'
-
+#these are the tables we're going to have. We will use migrations in the future to incrementally build upon the schema
 ActiveRecord::Schema.define do
   drop_table :stores if ActiveRecord::Base.connection.table_exists?(:stores)
   drop_table :employees if ActiveRecord::Base.connection.table_exists?(:employees)
